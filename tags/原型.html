@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>王凯の博客 - 记录生活中的点点滴滴</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="王凯,"> 
+    <meta name="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="王凯の博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">王凯の博客</span>
+    <div id="loader"></div>
+    <div id="single" class="page">
+    <div id="top">
+        <a class="icon-left image-icon" href="javascript:history.back()"></a>
+    </div>
+    <div class="section">
+        <div class="article">
+            <div class="main">
+                <div class="content">
+                
+                        <h2 id="构造函数方式创建对象"><a href="#构造函数方式创建对象" class="headerlink" title="构造函数方式创建对象"></a>构造函数方式创建对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// new 做了4件事情</span></span><br><span class="line"><span class="comment">// 1. 在内存中开辟了一个空间</span></span><br><span class="line"><span class="comment">// 2. 把 this 指向了这个空间</span></span><br><span class="line"><span class="comment">// 3. 执行构造函数中的代码</span></span><br><span class="line"><span class="comment">// 4. 自动返回 this</span></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'elser'</span>, <span class="number">19</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="静态成员和实例成员"><a href="#静态成员和实例成员" class="headerlink" title="静态成员和实例成员"></a>静态成员和实例成员</h2><ul>
+<li>实例成员：通过实例能访问的成员（函数、变量）</li>
+<li>静态成员：直接挂载到构造函数上的成员，只能通过构造函数本身能访问</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// name、age =&gt; 实例成员</span></span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.sex = <span class="string">'男'</span>; <span class="comment">// 静态成员</span></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'elser'</span>, <span class="number">19</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="构造函数的问题"><a href="#构造函数的问题" class="headerlink" title="构造函数的问题"></a>构造函数的问题</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'大家辛苦~'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'elser'</span>, <span class="number">19</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'ifer'</span>, <span class="number">18</span>);</span><br><span class="line"><span class="comment">// 每次实例化对象的时候重复开辟空间存储 say 方法，存在内存浪费</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.say === p2.say); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="解决构造函数的问题"><a href="#解决构造函数的问题" class="headerlink" title="解决构造函数的问题"></a>解决构造函数的问题</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 把公用的方法（say）挂载到构造函数的原型对象上面</span></span><br><span class="line">Person.prototype.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'大家辛苦~'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'elser'</span>, <span class="number">19</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'ifer'</span>, <span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.say === p2.say); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么实例对象-p1-能访问构造函数原型上的-say-方法呢？"><a href="#为什么实例对象-p1-能访问构造函数原型上的-say-方法呢？" class="headerlink" title="为什么实例对象 p1 能访问构造函数原型上的 say 方法呢？"></a>为什么实例对象 p1 能访问构造函数原型上的 say 方法呢？</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'大家辛苦~'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'elser'</span>, <span class="number">19</span>);</span><br><span class="line"><span class="comment">// 1. 是对象就有 __proto__ 属性</span></span><br><span class="line"><span class="comment">// 2. 实例对象的 __proto__ 指向构造函数的原型</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === Person.prototype);</span><br><span class="line">p1.say();</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于-constructor"><a href="#关于-constructor" class="headerlink" title="关于 constructor"></a>关于 constructor</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'大家辛苦~'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'elser'</span>, <span class="number">19</span>);</span><br><span class="line"><span class="comment">// 1. 是对象就有 __proto__ 属性</span></span><br><span class="line"><span class="comment">// 2. 实例对象的 __proto__ 指向构造函数的原型</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === Person.prototype);</span><br><span class="line"><span class="comment">// 3. 构造函数的原型对象具有 constructor 属性指向构造函数自己</span></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.constructor === Person);</span><br><span class="line"><span class="comment">// 4. 一般使用 constructor 来判断某个实例对象来自于谁</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.constructor === Person);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 简化代码</span></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="comment">// 修正 constructor 的指向</span></span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    say: function () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'大家辛苦~'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    play: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'玩 ~'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'elser'</span>, <span class="number">19</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.constructor === Person);</span><br></pre></td></tr></table></figure>
+
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p><strong>多个对象之间通过 <strong>proto</strong> 链接起来的这种关系就是原型链！</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'大家辛苦~'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'elser'</span>, <span class="number">19</span>);</span><br><span class="line"><span class="comment">// 1. 是对象就有 __proto__ 属性</span></span><br><span class="line"><span class="comment">// 2. 实例对象的 __proto__ 指向构造函数的原型</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__ === Person.prototype);</span><br><span class="line"><span class="comment">// 3. 构造函数的原型对象具有 constructor 属性指向构造函数自己</span></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.constructor === Person);</span><br><span class="line"><span class="comment">// 4. 一般使用 constructor 来判断某个实例对象来自于谁</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.constructor === Person);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> Person.prototype); <span class="comment">// object</span></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype.__proto__ === <span class="built_in">Object</span>.prototype);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.__proto__); <span class="comment">// null</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.__proto__.__proto__.__proto__); <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="原型链的查找规则"><a href="#原型链的查找规则" class="headerlink" title="原型链的查找规则"></a>原型链的查找规则</h2><p><strong>就近原则</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.age = <span class="number">19</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.age = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.age); <span class="comment">// 18</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="通过原型为数组扩展内置方法"><a href="#通过原型为数组扩展内置方法" class="headerlink" title="通过原型为数组扩展内置方法"></a>通过原型为数组扩展内置方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.max = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// this =&gt; [1, 3, 7, 0, 9]</span></span><br><span class="line">    <span class="keyword">var</span> max = <span class="keyword">this</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i ++) &#123;</span><br><span class="line">        <span class="comment">// 如果我发现里面有一项竟然比我假设的哪一项还有大</span></span><br><span class="line">        <span class="comment">// 说明假设错了，需要修正</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>[i] &gt; max) &#123;</span><br><span class="line">            max = <span class="keyword">this</span>[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">9</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.max()); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'大家加油'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Star</span>(<span class="params">name,age, money</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 1. Call 式继承，继承的是属性！</span></span><br><span class="line">    Person.call(<span class="keyword">this</span>, name, age);</span><br><span class="line">    <span class="keyword">this</span>.money = money;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2. 原型继承，继承的是方法！</span></span><br><span class="line">Star.prototype = <span class="keyword">new</span> Person();</span><br><span class="line">Star.prototype.constructor = Star;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> Star(<span class="string">'刘德华'</span>, <span class="number">18</span>, <span class="number">10000</span>)</span><br><span class="line">s.say();</span><br><span class="line"><span class="built_in">console</span>.log(s.constructor ===  Star);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 组合继承：Call 式继承 + 原型继承</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ES5-数组新增方法"><a href="#ES5-数组新增方法" class="headerlink" title="ES5 数组新增方法"></a>ES5 数组新增方法</h2><ul>
+<li>forEach，注意不能退出循环，除非抛出一个错误</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">    age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/* arr.forEach(function(value, index, arr) &#123;</span></span><br><span class="line"><span class="comment">    // forEach 的第二个参数是用来改变函数里面的 this 指向的</span></span><br><span class="line"><span class="comment">    console.log(value, index, arr, this);</span></span><br><span class="line"><span class="comment">&#125;, o); */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.forEach2 = <span class="function"><span class="keyword">function</span>(<span class="params">fn, _this</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// this =&gt; [1, 3, 5];</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i ++) &#123;</span><br><span class="line">        fn.call(_this, <span class="keyword">this</span>[i], i, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">arr.forEach2(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// forEach 的第二个参数是用来改变函数里面的 this 指向的</span></span><br><span class="line">    <span class="built_in">console</span>.log(value, index, arr, <span class="keyword">this</span>);</span><br><span class="line">&#125;, o);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>filter，返回的是筛选过后的新数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> newArr = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value &gt;= <span class="number">3</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(newArr);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>some，返回布尔值，有一个符合条件就返回 true</li>
+<li>every，返回布尔值，所有的符合条件才返回 true</li>
+<li>map，返回加工后的新数组</li>
+<li>trim，去除字符串的前后空格</li>
+<li>Object.keys()，把对象的key放到数组里面返回</li>
+<li>Object.values()</li>
+</ul>
+
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
