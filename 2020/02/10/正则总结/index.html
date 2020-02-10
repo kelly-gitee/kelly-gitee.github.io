@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>正则总结 - 王凯の博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪,正则作用对字符串进行匹配（reg.test(str)）、提取（str.match(reg)）、替换（str.replace(reg, 内容)）
+验证字符串是否匹配某规则1234// 如果不加 ^和$,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="王凯の博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">王凯の博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="https://kelly-gitee.github.io"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">正则总结</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">正则总结</h1>
+        <div class="stuff">
+            <span>二月 10, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="正则作用"><a href="#正则作用" class="headerlink" title="正则作用"></a>正则作用</h2><p>对字符串进行匹配（reg.test(str)）、提取（str.match(reg)）、替换（str.replace(reg, 内容)）</p>
+<h2 id="验证字符串是否匹配某规则"><a href="#验证字符串是否匹配某规则" class="headerlink" title="验证字符串是否匹配某规则"></a>验证字符串是否匹配某规则</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果不加 ^和$，test 代表包含</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d+/</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'我是中国人，12345'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="正则表达式的组成"><a href="#正则表达式的组成" class="headerlink" title="正则表达式的组成"></a>正则表达式的组成</h2><ul>
+<li>边界符号，^，$</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以 abc 开始，以 abc 结尾，并且里面只能是这 3 个 abc</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^abc$/</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'abcabc'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>[]</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// “消磁”，中括号里面的元字符会变成普通字符</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^.$/</span>; <span class="comment">// . 代表任意一个字符</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">'好'</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把 . 包在 [] 里面就代表 . 本身</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^[.]$/</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">'好'</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">'.'</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^\.$/</span>; <span class="comment">// 转移后 . 就代表 . 本身</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">'好'</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(reg.test(<span class="string">'.'</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>量词符：*（{0,}）、+（{1,}）、?（{0,1}）、<code>/a{3}/</code> 代表a出现3次</p>
+</li>
+<li><p>预定义类：\d（[0-9]）、\D（[^0-9]）、\w、\W、\s、\S、.（任意字符）</p>
+</li>
+</ul>
+<h2 id="正则替换"><a href="#正则替换" class="headerlink" title="正则替换"></a>正则替换</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'pink 老师是不是 Gay，反正我们老师不是'</span>;</span><br><span class="line"><span class="comment">// 把所有的“老师”替换成“同学”</span></span><br><span class="line"><span class="comment">// g =&gt; global 全局匹配</span></span><br><span class="line"><span class="comment">// i =&gt; ignore 忽略大小写</span></span><br><span class="line">str = str.replace(<span class="regexp">/老师|gay/gi</span>, <span class="string">'同学'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'name=jianfu&amp;age=18&amp;address=武汉'</span>;</span><br><span class="line"><span class="comment">/* &#123;</span></span><br><span class="line"><span class="comment">    name: 'jianfu',</span></span><br><span class="line"><span class="comment">    age: 18,</span></span><br><span class="line"><span class="comment">    address: '武汉'</span></span><br><span class="line"><span class="comment">&#125; */</span></span><br><span class="line"><span class="comment">// 把字符串以 &amp; 拆分成数组</span></span><br><span class="line"><span class="keyword">var</span> arr = str.split(<span class="string">'&amp;'</span>); <span class="comment">// ['name=jianfu', 'age=18', 'address=武汉']</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length ;i ++) &#123;</span><br><span class="line">    <span class="comment">// arr[i] // 'name=jianfu'</span></span><br><span class="line">    <span class="comment">// arr[i].split('=') // ['name', 'jianfu']</span></span><br><span class="line">    <span class="keyword">var</span> newArr= arr[i].split(<span class="string">'='</span>);</span><br><span class="line">    obj[newArr[<span class="number">0</span>]] = newArr[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// &#123;name: "jianfu", age: "18", address: "武汉"&#125; */</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="comment">// var arr = str.split(/&amp;|=/); //  ["name", "jianfu", "age", "18", "address", "武汉"]</span></span><br><span class="line"><span class="keyword">var</span> arr = str.split(<span class="regexp">/[&amp;=]/</span>); <span class="comment">//  ["name", "jianfu", "age", "18", "address", "武汉"]</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; arr.length; i +=<span class="number">2</span>) &#123;</span><br><span class="line">    obj[arr[i]] = arr[i+<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br></pre></td></tr></table></figure>
+
+<h2 id="提取"><a href="#提取" class="headerlink" title="提取"></a>提取</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'张珊：8000，李四：10000，你：15000'</span>;</span><br><span class="line"><span class="comment">// 先准备好想提取内容的正则</span></span><br><span class="line"><span class="comment">// var reg3 = /\d+/g;</span></span><br><span class="line"><span class="keyword">var</span> reg4 = <span class="regexp">/[\u4e00-\u9fa5]+/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(reg4));</span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正则作用"><span class="toc-number">1.</span> <span class="toc-text">正则作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证字符串是否匹配某规则"><span class="toc-number">2.</span> <span class="toc-text">验证字符串是否匹配某规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式的组成"><span class="toc-number">3.</span> <span class="toc-text">正则表达式的组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则替换"><span class="toc-number">4.</span> <span class="toc-text">正则替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提取"><span class="toc-number">5.</span> <span class="toc-text">提取</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>高阶函数 - 王凯の博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="直到这一刻微笑着说话为止，我至少留下了一公升眼泪,new Function()123456789var f = new Function(&#39;a&#39;, &#39;b&#39;, &#39;console.log(a+b)&#39;);f(1, 3);// 只是需要明白平常写的函数本质,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="王凯の博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">王凯の博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="https://kelly-gitee.github.io"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">高阶函数</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">高阶函数</h1>
+        <div class="stuff">
+            <span>二月 10, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="new-Function"><a href="#new-Function" class="headerlink" title="new Function()"></a>new Function()</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'console.log(a+b)'</span>);</span><br><span class="line">f(<span class="number">1</span>, <span class="number">3</span>);</span><br><span class="line"><span class="comment">// 只是需要明白平常写的函数本质上也是对象，来自于 Function</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">// 实例对象的 __proto__ 指向构造函数的原型</span></span><br><span class="line"><span class="built_in">console</span>.log(test.__proto__ === <span class="built_in">Function</span>.prototype);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Function</span>.prototype.__proto__ === <span class="built_in">Object</span>.prototype);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Function</span>.__proto__ === <span class="built_in">Function</span>.prototype);</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数的调用及-this-指向"><a href="#函数的调用及-this-指向" class="headerlink" title="函数的调用及 this 指向"></a>函数的调用及 this 指向</h2><ul>
+<li>全局函数中的 this</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 谁调用就是谁</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 严格模式下这里的this就是 undefined</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">// window</span></span><br><span class="line">&#125;</span><br><span class="line">test(); <span class="comment">// window.test();</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对象方法中的 this</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 谁调用就是谁</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    showAge: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// this = obj</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age); <span class="comment">// 18</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line">obj.showAge();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    showAge: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// this =&gt; window</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age); <span class="comment">// undefined</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> temp = obj.showAge;</span><br><span class="line">temp(); <span class="comment">// window.temp();</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    showAge: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// call 谁就是谁</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age); <span class="comment">// 20</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line">obj.showAge.call(&#123;<span class="attr">age</span>: <span class="number">20</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构造函数中的 this</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// this =&gt; 就是实例对象 t</span></span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// t 就是 Test 的实例</span></span><br><span class="line"><span class="keyword">var</span> t = <span class="keyword">new</span> Test(<span class="number">18</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// this =&gt; 就是实例对象 t</span></span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="comment">// 返回的一个简单数据类型，会“忽略”，还是返回的是默认的 this</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello world'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// t 就是 Test 的实例</span></span><br><span class="line"><span class="keyword">var</span> t = <span class="keyword">new</span> Test(<span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(t.age);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// this =&gt; 就是实例对象 t</span></span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="comment">// 返回的一个复杂数据类型，会覆盖默认返回的 this</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        age: <span class="number">19</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// t 不再是 Test 的实例，而是构造函数当中返回的那个复杂数据类型</span></span><br><span class="line"><span class="keyword">var</span> t = <span class="keyword">new</span> Test(<span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(t.age);</span><br></pre></td></tr></table></figure>
+
+<h2 id="改变函数内部-this-的指向"><a href="#改变函数内部-this-的指向" class="headerlink" title="改变函数内部 this 的指向"></a>改变函数内部 this 的指向</h2><h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><ul>
+<li>基本使用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基本使用</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, a + b); <span class="comment">// o, 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">    age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 会调用函数</span></span><br><span class="line"><span class="comment">// 其他参数依次往后排列</span></span><br><span class="line">test.call(o, <span class="number">1</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>应用场景</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现构造函数之间的属性继承，Call 式继承</span></span><br><span class="line"><span class="comment">// 可以“借用”其他类型下的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="number">0</span>: <span class="string">'深圳'</span>,</span><br><span class="line">    <span class="number">1</span>: <span class="string">'武汉'</span>,</span><br><span class="line">    length: <span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 向往里面去增加数据</span></span><br><span class="line"><span class="comment">/* obj['2'] = '郑州';</span></span><br><span class="line"><span class="comment">obj.length ++; */</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.push.call(obj, <span class="string">'郑州'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// push 的原理/源码分析</span></span><br><span class="line"><span class="comment">/* Array.prototype.push2 = function(con) &#123;</span></span><br><span class="line"><span class="comment">    // this =&gt; arr</span></span><br><span class="line"><span class="comment">    this[this.length] = con;</span></span><br><span class="line"><span class="comment">    this.length ++;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">arr.push2('北京'); */</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>判断类型</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下去以后自己封装一个判断类型的函数，isType</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call([]); <span class="comment">// '[object Array]'</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;); <span class="comment">// '[object Object]'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h2><ul>
+<li>基本使用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, a + b); <span class="comment">// o, 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">    age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 会调用函数</span></span><br><span class="line"><span class="comment">// 第二个参数是数组</span></span><br><span class="line">test.apply(o, [<span class="number">1</span>, <span class="number">3</span>]);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>应用场景</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">9</span>, <span class="number">8</span>, <span class="number">10</span>];</span><br><span class="line"><span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, arr); <span class="comment">// 求最大值</span></span><br><span class="line"><span class="built_in">console</span>.log.apply(<span class="built_in">console</span>, arr); <span class="comment">// 把数组以字符串的形式输出</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>, a + b); <span class="comment">// o, 4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">    age: <span class="number">18</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 不会调用函数</span></span><br><span class="line"><span class="comment">// 其他参数依次传递</span></span><br><span class="line"><span class="keyword">var</span> newFn = test.bind(o, <span class="number">1</span>);</span><br><span class="line">newFn(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">age</span>: <span class="number">18</span>&#125;;</span><br><span class="line">oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">a, e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// this =&gt; o</span></span><br><span class="line">    <span class="comment">// a 对应的就是bind当中的实参1</span></span><br><span class="line">    <span class="comment">// 对应不上的 e 就是事件对象</span></span><br><span class="line">&#125;.bind(o, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需求：在函数外部拿到定时器中的返回值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sum(<span class="number">3</span>,<span class="number">4</span>)); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 利用高阶函数解决上面的问题</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b, callback</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> sum = a + b;</span><br><span class="line">        callback(sum);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">3</span>,<span class="number">4</span>, <span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p><strong>闭包：一个函数使用了另一个函数中的变量，使用变量的地方会发生闭包现象，变量定义所在的函数就是闭包函数！</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// test 函数就是闭包函数</span></span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">8</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 这个地方会发生闭包现象</span></span><br><span class="line">        <span class="built_in">console</span>.log(num);</span><br><span class="line">    &#125;</span><br><span class="line">    fn();</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>应用场景</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需求：点击不同的按钮打印对应的索引</span></span><br><span class="line"><span class="keyword">var</span> aBtn = <span class="built_in">document</span>.querySelectorAll(<span class="string">'button'</span>);</span><br><span class="line"><span class="comment">/* for(var i = 0; i &lt; aBtn.length ; i ++) &#123;</span></span><br><span class="line"><span class="comment">    // 加索引</span></span><br><span class="line"><span class="comment">    aBtn[i].index = i;</span></span><br><span class="line"><span class="comment">    aBtn[i].onclick = function() &#123;</span></span><br><span class="line"><span class="comment">        console.log(this.index);</span></span><br><span class="line"><span class="comment">    &#125;;</span></span><br><span class="line"><span class="comment">&#125; */</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 利用闭包也可以打印当前的索引</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; aBtn.length ; i ++) &#123;</span><br><span class="line">    <span class="comment">// 闭包会时当前变量驻留内存不会马上释放</span></span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">        aBtn[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这种写法也是利用闭包，和上面效果一样</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; aBtn.length ; i ++) &#123;</span><br><span class="line">    aBtn[i].onclick = (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>函数自己调用自己就是递归</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 求阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jiecheng</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n * jiecheng(n<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 斐波那契数量</span></span><br><span class="line"><span class="comment">// 求第 N 项斐波那契的值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fbnq</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n === <span class="number">1</span> || n === <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fbnq(n - <span class="number">1</span>) + fbnq(n<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 求前 N 项，可以用 for 循环往数组里面push</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> prev = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> next = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">    <span class="keyword">var</span> sum = prev + next;</span><br><span class="line">    arr.push(sum);</span><br><span class="line">    <span class="comment">// 前一项变成下一项</span></span><br><span class="line">    prev = next;</span><br><span class="line">    <span class="comment">// 下一项变成 sum</span></span><br><span class="line">    next = sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/5146554.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/qq/001faIUs4M2zna.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#new-Function"><span class="toc-number">1.</span> <span class="toc-text">new Function()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数的调用及-this-指向"><span class="toc-number">2.</span> <span class="toc-text">函数的调用及 this 指向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改变函数内部-this-的指向"><span class="toc-number">3.</span> <span class="toc-text">改变函数内部 this 的指向</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-number">3.1.</span> <span class="toc-text">call</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#apply"><span class="toc-number">4.</span> <span class="toc-text">apply</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bind"><span class="toc-number">5.</span> <span class="toc-text">bind</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高阶函数"><span class="toc-number">6.</span> <span class="toc-text">高阶函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-number">7.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递归"><span class="toc-number">8.</span> <span class="toc-text">递归</span></a></li></ol>
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
