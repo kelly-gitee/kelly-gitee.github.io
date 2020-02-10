@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>王凯の博客 - 记录生活中的点点滴滴</title>
+    <title>Tag: function - 王凯の博客</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
@@ -35,53 +35,70 @@
 <body class="loading">
     <span id="config-title" style="display:none">王凯の博客</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="section">
-        <div class="article">
-            <div class="main">
-                <div class="content">
-                
-                        <h2 id="跨域传输数据的几个方法"><a href="#跨域传输数据的几个方法" class="headerlink" title="跨域传输数据的几个方法"></a>跨域传输数据的几个方法</h2><ol>
-<li><p>使用 jsonp 的方式 ，还记录腾讯天气的案例吗？</p>
-</li>
-<li><p>使用 CORS 的方式，这个方案是由服务器端设置的，设置的是 响应中的 响应头 </p>
-<p>Access-Control-Allow-Origin: *</p>
-<p>Access-Control-Allow-Methods: get,post,put</p>
-<p>Access-Control-Allow-Headers: token,content-type</p>
-<p>Access-Control-Allow-Credentials: true  设置域了之后，才可以跨域传递cookie </p>
-</li>
-<li><p>使用 代理 服务器的方式， 以后会在 webpack 或 nginx 这两个工具用学到</p>
-</li>
-<li><p>WebSocket 实现通信，一般用在网页聊天的场景下，京东客服</p>
-</li>
-<li><p>window.postMessage()  在两个窗口间进行传输数据 ，在开发地图相关的应用比较常见 </p>
-</li>
-</ol>
-<h2 id="Http-协议中的缓存"><a href="#Http-协议中的缓存" class="headerlink" title="Http 协议中的缓存"></a>Http 协议中的缓存</h2><ol>
-<li><p>强制缓存 ，强制是什么，就是时间没到，别来找我!</p>
-<p><strong>响应头</strong></p>
-<p>​    cache-control: public,max-age=3600</p>
-<p>​    Expires: 过期时间 </p>
-</li>
-<li><p>协商缓存 ，协商是什么？就是问,打个电话问一下 过期了没，过期了没?</p>
-<p><strong>响应头</strong></p>
-<p>​    e-tag: xxxx 按文件的内容生成的 一个id </p>
-<p>​    last-Modify: 时间  最后的修改时间 </p>
-<p>请求头</p>
-<p>​    if-None-Match : 如果不匹配, 304 , 200</p>
-<p>​    if-Modify-Since: 如果你后来已经修改了文件 ，就给我新的</p>
-</li>
-</ol>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="https://github.com/kelly-gitee" title="Github" target="_blank" rel="noopener">Github</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="分类" target="_blank" rel="noopener">分类</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="归档" target="_blank" rel="noopener">归档</a>
+        </li>
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="标签云" target="_blank" rel="noopener">标签云</a>
+        </li>
+        
+    </ul>
+    <p id="copyright">
+        &copy; 2020 John Doe.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a>
+        by Fechin
+    </p>
+</div>
 
-                
-                </div>
-            </div>
+<div id="container">
+    
+<div id="screen">
+    <div id="mark">
+        <div class="layer" data-depth="0.4">
+            <img src="/img/welcome-cover.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
         </div>
     </div>
+    <div id="vibrant">
+        <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
+            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
+        </svg>
+        <div></div>
+    </div>
+    <div id="header">
+        <div>
+            <a class="image-logo" href="/"></a>
+            <div class="icon-menu switchmenu"></div>
+        </div>
+    </div>
+    
+    <div id="post0">
+        <p>二月 10, 2020</p>
+        <h2><a href="/2020/02/10/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/" title="高阶函数" class="posttitle">高阶函数</a></h2>
+        <p class="summary">new Function()123456789var f = new Function('a', 'b', 'co...</p>
+    </div>
+    
 </div>
+
+    <div id="primary">
+        
+    </div>
+    
+</div>
+<div id="preview"></div>
+
 
 </body>
 
